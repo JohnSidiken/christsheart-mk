@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
+import PrayerRequestForm from '../components/PrayerForm';
 
 const PublicPage = () => {
   const [announcements, setAnnouncements] = useState([]);
@@ -69,6 +70,7 @@ const PublicPage = () => {
             </div>
           </div>
         ))}
+        <PrayerRequestForm />
       </div>
     );
 }

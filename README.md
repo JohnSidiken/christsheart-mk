@@ -6,14 +6,15 @@
 Public site + Admin dashboard for Christ's Heart Makerere.
 Built with React + Vite + Supabase. No backend server needed.
 
-**Goal**: Ship Sunday Service Page + Announcements that non-technical staff can update.
+**Goal**: Sunday Service Page + Announcements that non-technical staff can update.
 **Live Demo**: [https://christsheart-mk.vercel.app]
 
-## What’s in V1
-1. **Public /**: Header with church Logo and name, location
+## What’s in it
+1. **Public /**: Header with church Logo and name, location + a prayer request form, rendered in the `/admin`
 2. **Announcements**: Live data from Supabase table. Updates after refresh
 3. **Events**: Upcoming events from Supabase table
-4. **Admin /admin**: Password protected → Add/Edit/Delete announcements
+4. **Admin /admin**: Password protected → Add/Edit/Delete announcements, Upcoming events
+5. Member form, saves to Supabase, list of members on small phones and table on large screens
 
 ## Tech Stack
 - **Frontend**: React 18 + Vite + React Router DOM
@@ -53,6 +54,16 @@ create table public.events (
   constraint events_pkey primary key (id),
   constraint events_created_by_fkey foreign KEY (created_by) references auth.users (id)
 ) TABLESPACE pg_default;
+
+-- Members table
+
+create table members (
+  id bigint generated always as identity primary key,
+  name text not null,
+  phone text null,
+  member_group text not null default 'Ordinary Member',
+  created_at timestamptz not null default now()
+);
 ```
 
 </details>

@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
+import PrayerRequests from '../components/PrayerRequests';
+import Members from '../components/Members'
 
 const AdminPanel = () => {
   // ANNOUNCEMENTS STATE
@@ -373,13 +375,19 @@ const AdminPanel = () => {
             type="text"
             placeholder="Event Title"
             value={eventForm.title}
-            onChange={e => setEventForm({...eventForm, title: e.target.value})}
+            onChange={e => {
+              setEventForm({...eventForm, title: e.target.value});
+              setError(null);
+            }}
             style={{ width: '70%', padding: '0.5rem', marginBottom: '0.5rem', display: 'block', borderRadius: '6px', border: '1px solid #ddd' }}
           />
           <textarea
             placeholder="Description"
             value={eventForm.description}
-            onChange={e => setEventForm({...eventForm, description: e.target.value})}
+            onChange={e => {
+              setEventForm({...eventForm, description: e.target.value});
+              setError(null);
+            }}
             rows="2"
             style={{ width: '70%', padding: '0.5rem', marginBottom: '0.5rem', display: 'block', borderRadius: '6px', border: '1px solid #ddd' }}
           />
@@ -515,6 +523,11 @@ const AdminPanel = () => {
           </div>
         ))}
       </div>
+      
+      {/* ===== MEMBERS =====*/}
+      <Members />
+      {/* ===== PRAYER RRQUESTS ===== */}
+      <PrayerRequests />
     </div>
   );
 }

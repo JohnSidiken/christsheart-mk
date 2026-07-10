@@ -2,7 +2,6 @@ import { Routes, Route } from 'react-router-dom';
 import Layout from './Layout';
 import Login from './pages/LoginPage';
 import ProtectPage from './pages/ProtectPage';
-
 import PublicPage from './pages/PublicPage';
 import AdminPanel from './pages/AdminPanel';
 import './App.css';
