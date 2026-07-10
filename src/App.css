@@ -383,7 +383,7 @@ label {
   border-radius: 8px;
   background: #c2c9c445;
 }
-edit-modal input;focus {
+edit-modal input:focus {
   border-color: #932076;
 }
 .modal__actions {
