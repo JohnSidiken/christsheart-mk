@@ -172,6 +172,7 @@ const Members = () => {
         <div className='search-wrapper'>
           <input 
             type='text'
+            aria-label='Search member'
             value={search}
             onChange={(e) => {
               setSearch(e.target.value);

@@ -2,29 +2,42 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../AuthContext';
 const Login = () => {
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const { login } = useAuth();
   const navigate = useNavigate();
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if (!password.trim()) {
-      setError('Password required!');
-      return;
+    setError(null);
+    try {
+      await login(email, password);
+      navigate('/admin');
+    } catch (err) {
+      setError(err.message);
     }
-    const success = login(password.trim());
-    if (success) {
-      navigate('/admin', { replace: true });
-    } else {
-      setError('Wrong Password! Try Again!');
-      setPassword('');
-    }
+    setEmail('');
+    setPassword('');
   }
   return (
       <div className='login__container'>
         <h1 className='chm__title'>Admin Login</h1>
         <form onSubmit={handleLogin} className='login__form'>
+          <input 
+            type='email'
+            value={email}
+            aria-label='Enter email'
+            onChange={(e) => {
+              setEmail(e.target.value);
+              setError(null);
+            }}
+            placeholder='Enter email'
+            autoFocus
+            required
+            className='login__input'
+          />
           <input
+            aria-label='Enter password'
             type='password'
             value={password}
             onChange={(e) => {
@@ -32,6 +45,7 @@ const Login = () => {
               setError('');
             }}
             placeholder='Enter password'
+            required
             className='login__input'
           />
           <button type='submit' className='login__btn'>Login</button>

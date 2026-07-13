@@ -196,6 +196,7 @@ h2 {
 .login__input {
   border-radius: 5px;
   font-size: 1rem;
+  padding: 5px;
 }
 nav a {
   text-decoration: none;
@@ -215,45 +216,55 @@ nav a.active {
 .prayer {
   background: rgb(248,240,246);
   margin: 2rem auto;
-  padding: 0 1rem;
+  padding: 1rem;
+  width: 100%;
   max-width: 900px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
 }
 .prayer h3 {
   text-align: center;
   margin-bottom: 1rem;
   color: #2c3e50;
 }
-.prayer__form {
+.prayer div {
   display: flex;
-  align-items: stretch;
-  flex-wrap: wrap;
-  gap: 10px;
+  flex-direction: column;
+  gap: 6px;
+  margin: 1rem;
 }
+
 .prayer__form input {
-  flex: 1 1 160px;
   border-radius: 10px;
   border-color: #2c3e50;
-  background: #e0e7ff;
+  background: white;
   font-size: 16px;
   padding: 6px 7px;
   outline: none;
+}
+.prayer__form label {
+  color: #2c3e50;
+  font-weight: 600;
+  
 }
 .prayer__form input:focus {
   border-color: #932076;
   box-shadow: 0 0 3px rgba(73,204,247,0.23);
 }
-.prayer__input {
-  flex: 2 1 260px;
+.prayer__form .btn-wrapper {
+  display: flex;
 }
 .request__btn {
-  flex: 0 0 auto;
-  padding: 6px 7px;
+  width: auto;
+  margin-left: auto;
+  padding: 10px 12px;
   background: #932076;
   color: white;
   border: none;
   cursor: pointer;
-  border-radius: 7px;
+  border-radius: 10px;
   font-weight: 700;
+  font-size: 1rem;
   transition: transform 0.06s ease, opacity 0.02s;
 }
 .request__btn:active {
@@ -361,6 +372,7 @@ nav a.active {
   background: rgb(248,240,246);
   border-radius: 20px;
   padding: 1.5rem 1rem;
+  font-family: Sans-Serif;
 }
 .edit-modal h3 {
   color: #2c3e50;
@@ -381,7 +393,8 @@ label {
 .edit-modal input {
   padding: 5px;
   border-radius: 8px;
-  background: #c2c9c445;
+  background: white;
+  border-color: #2c3e50;
 }
 edit-modal input:focus {
   border-color: #932076;
@@ -392,9 +405,9 @@ edit-modal input:focus {
 }
 .modal__action {
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 10px;
-  font-weight: 600;
+  font-weight: 700;
   color: white;
   transition: transform 0.1s ease opacity 0.15s;
 }
@@ -403,10 +416,10 @@ edit-modal input:focus {
   opacity: 0.8;
 }
 .modal__action.cancel {
-  background: #503e3eb2;
+  background: #2c3e50;
 }
 .modal__action.save {
-  background: #43ea70c2;
+  background: #4f46e5;
 }
 
 /* Search input + button */

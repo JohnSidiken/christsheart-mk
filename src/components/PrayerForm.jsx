@@ -29,9 +29,12 @@ const PrayerRequestForm = () => {
   }
   return (
       <div id='request' className='prayer'>
-        <h3>Send in your prayer Request</h3>
+        <h3>Send in your prayer request</h3>
         <form onSubmit={handleSubmit} className='prayer__form'>
-          <input 
+          <div>
+            <label htmlFor='name'>Name:</label>
+            <input 
+            id='name'
             type='text'
             value={name}
             onChange={(e) => {
@@ -41,7 +44,11 @@ const PrayerRequestForm = () => {
             placeholder='John ...'
             disabled={saving}
           />
-          <input
+          </div>
+          <div>
+            <label htmlFor='prayer'>Prayer request:</label>
+            <input
+          id='prayer'
             type='text'
             value={request}
             onChange={(e) => {
@@ -52,9 +59,12 @@ const PrayerRequestForm = () => {
             disabled={saving}
             className='prayer__input'
           />
-          <button type='submit' disabled={saving} className='request__btn'>{saving? 'sending' : 'Send'}</button>
+          </div>
+          {error && <p className='prayer__error'>{error}</p>}
+          <div className='btn-wrapper'>
+            <button type='submit' disabled={saving} className='request__btn'>{saving? 'sending' : 'Send'}</button>
+          </div>
         </form>
-        {error && <p className='prayer__error'>{error}</p>}
         {message && <p className='prayer__success'>{message}</p>}
       </div>
     );
